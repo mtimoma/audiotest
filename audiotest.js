@@ -3,10 +3,10 @@ $(document).ready(function(){
     lowLag.init();
     lowLag.load("single.mp3");
     
-    $( "#button1" ).click(function() {
+    $( "#button1" ).mousedown(function() {
     	$("#audio1").trigger("play");
     });
-    $( "#button2" ).click(function() {
+    $( "#button2" ).mousedown(function() {
     	lowLag.play("single.mp3");
     });
     //setTimeout(function() {$("#circle1").show();},1000);
