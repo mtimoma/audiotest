@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var routineTimer = new CountdownTimer();
 	$("#circle1").hide();
     lowLag.init();
     lowLag.load("single.mp3");
@@ -17,6 +18,22 @@ $(document).ready(function(){
     });
     $( "#button2" ).mouseup(function() {
     	$("#circle1").hide();
+    });
+
+    $("#button3").click(function() {
+    	$("#circle1").hide();
+    	setTimeout(function(){ $("#circle1").show(); }, 2000);
+    	setTimeout(function(){ $("#circle1").hide(); }, 4000);
+    	
+    	/*routineTimer.reset(5);
+    	while (routineTimer.getTime() > 2) {
+    		continue;
+    	}
+    	$("#circle1").show();
+    	while (routineTimer.getTime() > 0) {
+    		continue;
+    	}
+    	$("#circle1").hide();*/
     });
     //setTimeout(function() {$("#circle1").show();},1000);
 });
