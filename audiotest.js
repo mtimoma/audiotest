@@ -4,9 +4,11 @@ $(document).ready(function(){
     lowLag.load("single.mp3");
     
     $( "#button1" ).mousedown(function() {
+    	$("#circle1").show();
     	$("#audio1").trigger("play");
     });
     $( "#button2" ).mousedown(function() {
+    	$("#circle1").show();
     	lowLag.play("single.mp3");
     });
     //setTimeout(function() {$("#circle1").show();},1000);
