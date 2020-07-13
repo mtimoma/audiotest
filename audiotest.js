@@ -7,9 +7,16 @@ $(document).ready(function(){
     	$("#circle1").show();
     	$("#audio1").trigger("play");
     });
+    $( "#button1" ).mouseup(function() {
+    	$("#circle1").hide();
+    });
+
     $( "#button2" ).mousedown(function() {
     	$("#circle1").show();
     	lowLag.play("single.mp3");
+    });
+    $( "#button2" ).mouseup(function() {
+    	$("#circle1").hide();
     });
     //setTimeout(function() {$("#circle1").show();},1000);
 });
