@@ -1,9 +1,10 @@
 $(document).ready(function(){
-	var routineTimer = new CountdownTimer();
-	$("#circle1").hide();
-    lowLag.init();
+	lowLag.init();
     lowLag.load("single.mp3");
+    routineTimer = new CountdownTimer();
+	$("#circle1").hide();
     
+    //test audio tag
     $( "#button1" ).mousedown(function() {
     	$("#circle1").show();
     	$("#audio1").trigger("play");
@@ -12,6 +13,7 @@ $(document).ready(function(){
     	$("#circle1").hide();
     });
 
+    //test lowLag.js
     $( "#button2" ).mousedown(function() {
     	$("#circle1").show();
     	lowLag.play("single.mp3");
@@ -20,68 +22,28 @@ $(document).ready(function(){
     	$("#circle1").hide();
     });
 
+    //use JS setTimeout
     $("#button3").click(function() {
     	$("#circle1").hide();
-    	setTimeout(function(){ $("#circle1").show(); }, 2000);
-    	setTimeout(function(){ $("#circle1").hide(); }, 4000);
-    	
-    	/*routineTimer.reset(5);
-    	while (routineTimer.getTime() > 2) {
-    		continue;
-    	}
-    	$("#circle1").show();
-    	while (routineTimer.getTime() > 0) {
-    		continue;
-    	}
-    	$("#circle1").hide();*/
+    	routineTimer.reset(2);
+    	setTimeout(function(){ 
+    		$("#circle1").show(); 
+    		$("#start").html("Offset: " + (1-routineTimer.getTime())*1000 + "ms");
+    	}, 1000);
     });
-    //setTimeout(function() {$("#circle1").show();},1000);
+
+    //use psychojs timers
+    $("#button4").click(function() {
+    	$("#circle1").hide();
+    	routineTimer.reset(2);
+    	function step() {
+    		if (routineTimer.getTime() <= 1 && !$("#circle1").is(":visible")) {
+    			$("#circle1").show();
+    			$("#start").html("Offset: " + (1-routineTimer.getTime())*1000 + "ms");
+    			return;
+    		}
+    		window.requestAnimationFrame(step);
+    	}
+    	window.requestAnimationFrame(step);
+    });
 });
-/*
-$(document).ready(function(){
-    var routineTimer = new util-2020.1.CountdownTimer();
-    $("#circle1").hide();
-    routineTimer.reset(5);
-	while (routineTimer.getTime() > 0) {
-		// listen for input
-		if (routineTimer.getTime() < 4) {
-    		$("#circle1").show();
-		}
-	}
-});
-*/
-
-
-/*
-function() {
-	var svgElement = document.getElementById("circle1");
-var audioElement = document.getElementById("audio1");
-
-var routineTimer = new util.CountdownTimer();
-
-var r = confirm("Press");
-//for (var t = 0; t < 5; t++) {
-	var stimOn = false;
-	routineTimer.reset(5);
-	//audioElement.play();
-	console.log(routineTimer.getTime())
-	while (routineTimer.getTime() > 0) {
-		// listen for input
-		if (routineTimer.getTime() < 4) {
-			svgElement.setAttribute("visibility","visible");
-			console.log(routineTimer.getTime())
-			break;
-		}
-	}
-	while (routineTimer.getTime() > 0) {
-		continue;
-	}
-	console.log(routineTimer.getTime())
-
-	//svgElement.setAttribute("visibility","hidden");
-//}
-
-//setTimeout(function(){ svgElement.setAttribute("visibility","hidden"); }, 3000);
-//setTimeout(function(){ audioElement.play(); }, 3000);
-
-}*/
