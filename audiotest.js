@@ -37,7 +37,7 @@ $(document).ready(function(){
     	$("#circle1").hide();
     	routineTimer.reset(2);
     	function step() {
-    		if (routineTimer.getTime() <= 1 + 1000/60) {
+    		if (routineTimer.getTime() <= (1 + 1/120)) {
     			$("#circle1").show();
     			$("#start").html("Offset: " + (1-routineTimer.getTime())*1000 + "ms");
     			return;
